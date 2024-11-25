@@ -1,0 +1,9 @@
+<template>
+  <AtlDashboard />
+  <AppFooter />
+</template>
+
+<script setup>
+  import AtlDashboard from '@/components/AtlDashboard.vue';
+
+</script>
