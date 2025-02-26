@@ -6,7 +6,7 @@
  */
 
 // Composables
-//TODO:import { useAuth } from '@/store/auth'; // Import your auth store or use `localStorage`
+import { useAuthStore } from '@/stores/auth';
 import { createRouter, createWebHistory } from 'vue-router/auto'
 import { routes } from 'vue-router/auto-routes'
 // import { isAuthenticated } from '@/stores/auth'; // Tracks auth state
@@ -35,33 +35,19 @@ router.isReady().then(() => {
   localStorage.removeItem('vuetify:dynamic-reload')
 })
 
-//idk
-// // Global Navigation Guard
-// router.beforeEach((to, from, next) => {
-//   // Check if the route requires authentication
-//   if (to.meta.requiresAuth && !isAuthenticated.value) {
-//     next('/login'); // Redirect to login page
-//   } else {
-//     next(); // Allow navigation
-//   }
-// });
-//idk
-
-// Global guard to handle login redirection
 router.beforeEach((to, from, next) => {
-  //const auth = useAuth(); // Or use localStorage: Boolean(localStorage.getItem('user'))
-  //const isAuthenticated = auth.isLoggedIn || Boolean(localStorage.getItem('user'));
-  const isAuthenticated = false; //until Auth has been implemented
+  const authStore = useAuthStore();
+  const isAuthenticated = authStore.isLoggedIn;  // now it's dynamic
 
-  // Redirect if trying to access a restricted page without authentication
+  //add conditions for user role/type
+  // if (to.path === '/dashboard' || to.path === '/admin' && !isAuthenticated) {
   if (to.path === '/dashboard' && !isAuthenticated) {
     next('/login');
   } else if (to.path === '/' && !isAuthenticated) {
     next('/login');
-  } else if (to.path === '/login' && isAuthenticated) { //when navigating abck but still logged in
+  } else if (to.path === '/login' && isAuthenticated) {
     next('/dashboard');
-  }
-  else {
+  } else {
     next();
   }
 });

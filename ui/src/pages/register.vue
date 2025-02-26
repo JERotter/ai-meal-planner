@@ -3,7 +3,7 @@
     <v-main>
       <v-container class="d-flex align-center justify-center fill-height bg-primary">
         <v-card class="register-card" elevation="10">
-          <v-card-title class="text-center">AI Meal Planner</v-card-title>
+          <v-card-title class="text-center">🌶️ Peri~Peri A.I. Meal Planner 🌶️</v-card-title>
           <v-card-subtitle class="text-center">Create a new account</v-card-subtitle>
 
           <v-card-text>

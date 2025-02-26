@@ -3,7 +3,7 @@
     <v-main>
       <v-container class="d-flex align-center justify-center fill-height bg-primary">
         <v-card class="login-card" elevation="10">
-          <v-card-title class="text-center">AI Meal Planner</v-card-title>
+          <v-card-title class="text-center">🌶️ Peri~Peri A.I. Meal Planner 🌶️</v-card-title>
           <v-card-subtitle class="text-center">Log in to your account</v-card-subtitle>
 
           <v-card-text>
@@ -57,6 +57,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
 
 const email = ref('');
 const password = ref('');
@@ -66,6 +67,7 @@ const router = useRouter();
 
 // Hardcoded credentials for comparison
 const validEmail = 'user@example.com';
+const validAdminEmail = 'admin@example.com';
 const validPassword = 'securepassword';
 
 // Validation rules
@@ -85,9 +87,15 @@ function handleSubmit() {
       loading.value = false;
       if (email.value === validEmail && password.value === validPassword) {
         alert('Logged in successfully');
-        //router.push('/admin'); // Redirect to /admin upon success
+        const authStore = useAuthStore();
+        authStore.logIn();
         router.push('/dashboard'); // Redirect to /dashboard upon success for all non admin users
-      } else {
+      } else if (email.value === validAdminEmail && password.value === validPassword) {
+        alert('Logged in successfully');
+        const authStore = useAuthStore();
+        authStore.logIn();
+        router.push('/admin'); // Redirect to /admin
+      }else {
         alert('Invalid email or password. Please try again.');
       }
     }, 1000);
