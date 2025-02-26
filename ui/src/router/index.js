@@ -37,10 +37,9 @@ router.isReady().then(() => {
 
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore();
-  const isAuthenticated = authStore.isLoggedIn;  // now it's dynamic
+  const isAuthenticated = authStore.isLoggedIn;
 
   //add conditions for user role/type
-  // if (to.path === '/dashboard' || to.path === '/admin' && !isAuthenticated) {
   if (to.path === '/dashboard' && !isAuthenticated) {
     next('/login');
   } else if (to.path === '/' && !isAuthenticated) {

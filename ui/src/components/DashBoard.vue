@@ -12,7 +12,6 @@
         <v-list-item title="Settings" />
         <v-list-item title="Messages" />
         <v-list-item title="Chat" />
-        <!-- <v-list-item to="/login" title="Logout" router /> -->
         <v-list-item to="/login" title="Logout" @click="logout" />
       </v-list>
     </v-navigation-drawer>
