@@ -1,6 +1,8 @@
 <template>
-  <AtlDashboard />
-  <AppFooter />
+  <div>
+    <AtlDashboard />
+    <AppFooter />
+  </div>
 </template>
 
 <script setup>

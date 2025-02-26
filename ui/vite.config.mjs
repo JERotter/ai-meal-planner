@@ -4,6 +4,7 @@ import Vue from '@vitejs/plugin-vue'
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import ViteFonts from 'unplugin-fonts/vite'
 import VueRouter from 'unplugin-vue-router/vite'
+import fs from 'fs';
 
 // Utilities
 import { defineConfig } from 'vite'
@@ -50,5 +51,9 @@ export default defineConfig({
   },
   server: {
     port: 3000,
+    https: {
+      key: fs.readFileSync('./certs/localhost-key.pem'),
+      cert: fs.readFileSync('./certs/localhost-cert.pem')
+    }
   },
 })

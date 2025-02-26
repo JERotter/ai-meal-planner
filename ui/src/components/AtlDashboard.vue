@@ -12,7 +12,7 @@
         <v-list-item title="Settings" />
         <v-list-item title="Messages" />
         <v-list-item title="Chat" />
-        <v-list-item to="/login" title="Logout" router />
+        <v-list-item to="/login" title="Logout" @click="logout" />
       </v-list>
     </v-navigation-drawer>
 
@@ -133,6 +133,8 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/auth';
 
 // Table Data
 const headers = [
@@ -198,6 +200,14 @@ const recipes = [
 ];
 
 const hoveredCard = ref(null); // Tracks which card is hovered
+
+function logout() {
+  const authStore = useAuthStore()
+  const router = useRouter()
+  authStore.logOut()  // set isLoggedIn = false
+  router.push('/login')
+}
+
 </script>
 
 <style scoped>

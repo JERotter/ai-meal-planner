@@ -1,6 +1,8 @@
 <template>
-  <DashBoard />
-  <AppFooter />
+  <div>
+    <DashBoard />
+    <AppFooter />
+  </div>
 </template>
 
 <script setup>
