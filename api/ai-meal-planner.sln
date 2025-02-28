@@ -1,8 +1,16 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeriPeri.API", "PeriPeri.API\PeriPeri.API.csproj", "{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeriPeri.Application", "PeriPeri.Application\PeriPeri.Application.csproj", "{6700AED4-0F1C-4C4D-99CC-601866861ACE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeriPeri.Domain", "PeriPeri.Domain\PeriPeri.Domain.csproj", "{DFFDBAAD-4A33-47A9-9D3E-38008B51F640}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeriPeri.Infrastructure", "PeriPeri.Infrastructure\PeriPeri.Infrastructure.csproj", "{85E5F0FE-95DA-4AD2-A2AF-B7B6D93253BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeriPeri.UnitTests", "PeriPeri.UnitTests\PeriPeri.UnitTests.csproj", "{F56D5648-A7A4-4D71-9D22-BF3C7B089749}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,6 +22,22 @@ Global
 		{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6700AED4-0F1C-4C4D-99CC-601866861ACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6700AED4-0F1C-4C4D-99CC-601866861ACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6700AED4-0F1C-4C4D-99CC-601866861ACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6700AED4-0F1C-4C4D-99CC-601866861ACE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFFDBAAD-4A33-47A9-9D3E-38008B51F640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFFDBAAD-4A33-47A9-9D3E-38008B51F640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFFDBAAD-4A33-47A9-9D3E-38008B51F640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFFDBAAD-4A33-47A9-9D3E-38008B51F640}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85E5F0FE-95DA-4AD2-A2AF-B7B6D93253BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85E5F0FE-95DA-4AD2-A2AF-B7B6D93253BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85E5F0FE-95DA-4AD2-A2AF-B7B6D93253BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85E5F0FE-95DA-4AD2-A2AF-B7B6D93253BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F56D5648-A7A4-4D71-9D22-BF3C7B089749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F56D5648-A7A4-4D71-9D22-BF3C7B089749}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F56D5648-A7A4-4D71-9D22-BF3C7B089749}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F56D5648-A7A4-4D71-9D22-BF3C7B089749}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
