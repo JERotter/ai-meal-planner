@@ -6,7 +6,6 @@ namespace PeriPeri.API.Controllers;
 [Route("[controller]")]
 public class UserController : ControllerBase
 {
-
     public UserController()
     {
     }
@@ -18,7 +17,9 @@ public class UserController : ControllerBase
         {
             FirstName = "Jane",
             LastName = "Doe",
-            Id = Guid.NewGuid()
+            Id = Guid.NewGuid(),
+            Email = "email@23",
+            UserName = "username23"
         })
         .ToArray();
     }

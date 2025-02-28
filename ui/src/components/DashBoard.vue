@@ -75,10 +75,10 @@
         <v-row>
           <v-col cols="12" md="6">
             <v-card>
-              <v-card-title>Data Table 1</v-card-title>
+              <v-card-title>Users</v-card-title>
               <v-data-table
                 :headers="headers"
-                :items="items"
+                :items="userStore.users"
                 class="elevation-1"
                 :items-per-page="5"
               >
@@ -101,10 +101,10 @@
           </v-col>
           <v-col cols="12" md="6">
             <v-card>
-              <v-card-title>Data Table 2</v-card-title>
+              <v-card-title>Data Table 2 (fake data)</v-card-title>
               <v-data-table
-                :headers="headers"
-                :items="items"
+                :headers="headers1"
+                :items="items1"
                 class="elevation-1"
                 :items-per-page="5"
               >
@@ -133,17 +133,25 @@
 
 <script setup>
 import { ref } from 'vue';
+import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
+import { useUserStore } from '@/stores/users';
+
+const userStore = useUserStore()
+// Fetch users when the component mounts
+onMounted(() => {
+  userStore.fetchUsers()
+})
 
 // Table Data
-const headers = [
+const headers1 = [
   { text: 'Name', value: 'name' },
   { text: 'Email', value: 'email' },
   { text: 'Role', value: 'role' },
 ];
 
-const items = [
+const items1 = [
   { name: 'Alice', email: 'alice@example.com', role: 'Admin' },
   { name: 'Bob', email: 'bob@example.com', role: 'Editor' },
   { name: 'Charlie', email: 'charlie@example.com', role: 'Viewer' },
@@ -208,6 +216,36 @@ function logout() {
   router.push('/login')
 }
 
+</script>
+
+<script>
+// Table Data
+// const headers = [
+//   { text: 'Name', value: 'name' },
+//   { text: 'Email', value: 'email' },
+//   { text: 'Role', value: 'role' },
+// ];
+
+// const items = [
+//   { name: 'Alice', email: 'alice@example.com', role: 'Admin' },
+//   { name: 'Bob', email: 'bob@example.com', role: 'Editor' },
+//   { name: 'Charlie', email: 'charlie@example.com', role: 'Viewer' },
+//   { name: 'David', email: 'david@example.com', role: 'Admin' },
+//   { name: 'Eve', email: 'eve@example.com', role: 'Editor' },
+// ];
+export default {
+  data() {
+    return {
+      headers: [
+        { text: 'FirstName', value: 'firstName' },
+        { text: 'LastName', value: 'lastName' },
+        { text: 'Email', value: 'email' },
+        { text: 'Username', value: 'userName' },
+        { text: 'Id', value: 'id' }
+      ]
+    }
+  }
+}
 </script>
 
 <style scoped>
