@@ -62,7 +62,7 @@
           <v-card-actions class="justify-center">
             <small>
               Already have an account?
-              <a href="/login" class="text-accent">Log in</a>
+              <a href="/app/login" class="text-accent">Log in</a>
             </small>
           </v-card-actions>
         </v-card>

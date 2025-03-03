@@ -40,15 +40,23 @@ router.beforeEach((to, from, next) => {
   const isAuthenticated = authStore.isLoggedIn;
 
   //add conditions for user role/type
-  if (to.path === '/dashboard' && !isAuthenticated) {
-    next('/login');
-  } else if (to.path === '/' && !isAuthenticated) {
-    next('/login');
-  } else if (to.path === '/login' && isAuthenticated) {
-    next('/dashboard');
+  if (to.path === '/app/dashboard' && !isAuthenticated) {
+    next('/app/login');
+  } else if (to.path === '/app/login' && isAuthenticated) {
+    next('/app/dashboard');
   } else {
     next();
   }
+
+  // if (to.path === '/app/dashboard' && !isAuthenticated) {
+  //   next('/app/login');
+  // } else if (to.path === '/' && !isAuthenticated) {
+  //   next('/app/login');
+  // } else if (to.path === '/app/login' && isAuthenticated) {
+  //   next('/app/dashboard');
+  // } else {
+  //   next();
+  // }
 });
 
 export default router
