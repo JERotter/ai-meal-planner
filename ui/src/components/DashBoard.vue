@@ -17,10 +17,43 @@
     </v-navigation-drawer>
 
     <!-- App Bar -->
-    <v-app-bar app color="primary" dark>
-      <v-app-bar-nav-icon @click="toggleDrawer" />  <!-- Drawer Toggle Icon -->
-      <v-toolbar-title>My Dashboard</v-toolbar-title>
-    </v-app-bar>
+  <v-app-bar app color="primary" dark>
+    <v-app-bar-nav-icon @click="toggleDrawer" /> <!-- Drawer Toggle Icon -->
+    <v-toolbar-title>My Dashboard</v-toolbar-title>
+
+    <!-- Spacer to push profile to the right -->
+    <v-spacer></v-spacer>
+
+    <!-- Notification Bell Icon -->
+    <v-btn to="/app/notifications" icon>
+      <v-badge color="red" content="3" overlap> <!-- Example: 3 new notifications -->
+        <v-icon>mdi-bell</v-icon>
+      </v-badge>
+    </v-btn>
+
+    <!-- Profile Picture with Menu -->
+    <v-menu offset-y>
+      <template v-slot:activator="{ props }">
+        <v-btn v-bind="props" class="d-flex align-center" text>
+          <v-avatar size="40">
+            <v-img src="@/assets/profile.jpg" alt="Profile Picture" />
+          </v-avatar>
+          <span class="ml-2 text-white text-decoration-underline">{{ userName }}</span>
+        </v-btn>
+      </template>
+      <v-list>
+        <v-list-item to="/profile">
+          <v-list-item-title>Profile</v-list-item-title>
+        </v-list-item>
+        <v-list-item to="/settings">
+          <v-list-item-title>Settings</v-list-item-title>
+        </v-list-item>
+        <v-list-item @click="logout">
+          <v-list-item-title>Logout</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
+  </v-app-bar>
 
     <!-- Main Content -->
     <v-main>
@@ -216,23 +249,11 @@ function logout() {
   router.push('/app/login')
 }
 
+const userName = ref("Weasel");
+
 </script>
 
 <script>
-// Table Data
-// const headers = [
-//   { text: 'Name', value: 'name' },
-//   { text: 'Email', value: 'email' },
-//   { text: 'Role', value: 'role' },
-// ];
-
-// const items = [
-//   { name: 'Alice', email: 'alice@example.com', role: 'Admin' },
-//   { name: 'Bob', email: 'bob@example.com', role: 'Editor' },
-//   { name: 'Charlie', email: 'charlie@example.com', role: 'Viewer' },
-//   { name: 'David', email: 'david@example.com', role: 'Admin' },
-//   { name: 'Eve', email: 'eve@example.com', role: 'Editor' },
-// ];
 export default {
   data() {
     return {

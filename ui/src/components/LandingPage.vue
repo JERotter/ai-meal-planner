@@ -1,9 +1,12 @@
 <template>
-  <v-app>
+  <div>
     <!-- Sticky Navigation Bar -->
     <v-app-bar app color="white" elevate-on-scroll>
       <v-container class="d-flex align-center">
-        <v-btn text to="/" class="text-h6 font-weight-bold">A.I. Meal Planner</v-btn>
+        <v-btn to="/" class="pa-0" height= "150" width="150" style="color:white">
+          <v-img src="@/assets/logo-black.png" alt="A.I. Meal Planner Logo" contain />
+        </v-btn>
+
         <v-spacer></v-spacer>
         <v-btn text @click="scrollTo('how-it-works')">How It Works</v-btn>
         <v-btn text @click="scrollTo('testimonials')">Testimonials</v-btn>
@@ -81,40 +84,23 @@
       </v-row>
     </v-container>
 
-     <!-- ALT Testimonials -->
-     <v-container class="py-12 px-6 bg-gray-800 text-white">
+    <!-- ALT Testimonials -->
+    <v-container class="py-12 px-6 bg-gray-800 text-white">
       <h2 class="text-2xl font-bold text-center mb-8">What Our Users Say</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="flex items-center space-x-4 bg-gray-700 p-6 rounded-md">
-          <img src="../assets/images/users/user2.jpg" alt="User 1" class="w-16 h-16 rounded-full" />
-          <div>
-            <p>"Eat This Much helped me stay on track with my goals!"</p>
-            <p class="text-sm mt-2">- Satisfied User</p>
-          </div>
-        </div>
-        <div class="flex items-center space-x-4 bg-gray-700 p-6 rounded-md">
-          <img src="../assets/images/users/user1.jpg" alt="User 2" class="w-16 h-16 rounded-full" />
-          <div>
-            <p>"This app takes the guesswork out of meal planning!"</p>
-            <p class="text-sm mt-2">- Another User</p>
-          </div>
-        </div>
-        <div class="flex items-center space-x-4 bg-gray-700 p-6 rounded-md">
-          <img src="../assets/images/users/user3.jpg" alt="User 3" class="w-16 h-16 rounded-full" />
-          <div>
-            <p>"I've saved so much time and money using this app!"</p>
-            <p class="text-sm mt-2">- Happy Customer</p>
-          </div>
-        </div>
-        <div class="flex items-center space-x-4 bg-gray-700 p-6 rounded-md">
-          <img src="../assets/images/users/user4.jpg" alt="User 4" class="w-16 h-16 rounded-full" />
-          <div>
-            <p>"It's like having a personal nutritionist in my pocket!"</p>
-            <p class="text-sm mt-2">- Fitness Enthusiast</p>
-          </div>
-        </div>
-      </div>
-    </v-container>
+      <v-row class="gap-6">
+        <v-col cols="12" md="6" v-for="(testimonial, index) in testimonials" :key="index">
+          <v-card class="bg-gray-700 p-6 rounded-md d-flex align-center">
+            <v-avatar size="256">
+              <img :src="testimonial.image" :alt="testimonial.name" />
+            </v-avatar>
+            <div class="ml-4">
+              <p class="text-white">{{ testimonial.quote }}</p>
+              <p class="text-sm mt-2 text-gray-300">- {{ testimonial.name }}</p>
+            </div>
+          </v-card>
+        </v-col>
+      </v-row>
+  </v-container>
 
     <!-- Call to Action -->
     <v-container class="text-center py-12">
@@ -130,7 +116,7 @@
     <footer class="py-6 bg-gray-900 text-white text-center">
       <p>&copy; 2024 Eat This Much Clone. All rights reserved.</p>
     </footer>
-  </v-app>
+  </div>
 </template>
 
 <script setup>
@@ -150,10 +136,46 @@ const scrollTo = (id) => {
 const generateMeals = () => {
   router.push("/app/register");
 };
+
+const testimonials = [
+  {
+    image: new URL("../assets/images/users/user1.jpg", import.meta.url),
+    quote: "Eat This Much helped me stay on track with my goals!",
+    name: "Satisfied User",
+  },
+  {
+    image: new URL("../assets/images/users/user2.jpg", import.meta.url),
+    quote: "This app takes the guesswork out of meal planning!",
+    name: "Another User",
+  },
+  {
+    image: new URL("../assets/images/users/user3.jpg", import.meta.url),
+    quote: "I've saved so much time and money using this app!",
+    name: "Happy Customer",
+  },
+  {
+    image: new URL("../assets/images/users/user4.jpg", import.meta.url),
+    quote: "It's like having a personal nutritionist in my pocket!",
+    name: "Fitness Enthusiast",
+  },
+];
 </script>
 
 <style scoped>
 .bg-gradient {
   background: linear-gradient(to right, #3f51b5, #673ab7);
+}
+
+.v- {
+  width: 256px; /* Increased size for a more rectangular shape */
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.v-img {
+  width: 256px; /* Increased size for a more rectangular shape */
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 </style>
