@@ -51,7 +51,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>© 2025 Your Brand. All rights reserved.</p>
+      <p>Peri~Peri © 2025. All rights reserved.</p>
     </div>
   </footer>
 </template>

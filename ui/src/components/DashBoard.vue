@@ -6,6 +6,16 @@
       color="surface"
       :permanent="false"
     >
+    <!-- IDK...?? -->
+    <v-img
+          src="@/assets/logo-white.png"
+          alt="A.I. Meal Planner Logo"
+          height="80"
+          max-width="200"
+          cover
+          class="logo-img"
+        />
+        <!-- IDK...?? -->
       <v-list>
         <v-list-item title="Dashboard" />
         <v-list-item title="Profile" />
@@ -16,7 +26,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <!-- App Bar -->
+
   <v-app-bar app color="primary" dark>
     <v-app-bar-nav-icon @click="toggleDrawer" /> <!-- Drawer Toggle Icon -->
     <v-toolbar-title>My Dashboard</v-toolbar-title>
@@ -25,7 +35,7 @@
     <v-spacer></v-spacer>
 
     <!-- Notification Bell Icon -->
-    <v-btn to="/app/notifications" icon>
+    <v-btn to="/app/inbox" icon>
       <v-badge color="red" content="3" overlap> <!-- Example: 3 new notifications -->
         <v-icon>mdi-bell</v-icon>
       </v-badge>
