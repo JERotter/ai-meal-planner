@@ -12,7 +12,7 @@
         <v-list-item title="Settings" />
         <v-list-item title="Messages" />
         <v-list-item title="Chat" />
-        <v-list-item to="/login" title="Logout" @click="logout" />
+        <v-list-item to="/app/login" title="Logout" @click="logout" />
       </v-list>
     </v-navigation-drawer>
 
@@ -205,7 +205,7 @@ function logout() {
   const authStore = useAuthStore()
   const router = useRouter()
   authStore.logOut()  // set isLoggedIn = false
-  router.push('/login')
+  router.push('/app/login')
 }
 
 </script>

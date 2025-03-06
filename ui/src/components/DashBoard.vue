@@ -12,15 +12,48 @@
         <v-list-item title="Settings" />
         <v-list-item title="Messages" />
         <v-list-item title="Chat" />
-        <v-list-item to="/login" title="Logout" @click="logout" />
+        <v-list-item to="/app/login" title="Logout" @click="logout" />
       </v-list>
     </v-navigation-drawer>
 
     <!-- App Bar -->
-    <v-app-bar app color="primary" dark>
-      <v-app-bar-nav-icon @click="toggleDrawer" />  <!-- Drawer Toggle Icon -->
-      <v-toolbar-title>My Dashboard</v-toolbar-title>
-    </v-app-bar>
+  <v-app-bar app color="primary" dark>
+    <v-app-bar-nav-icon @click="toggleDrawer" /> <!-- Drawer Toggle Icon -->
+    <v-toolbar-title>My Dashboard</v-toolbar-title>
+
+    <!-- Spacer to push profile to the right -->
+    <v-spacer></v-spacer>
+
+    <!-- Notification Bell Icon -->
+    <v-btn to="/app/notifications" icon>
+      <v-badge color="red" content="3" overlap> <!-- Example: 3 new notifications -->
+        <v-icon>mdi-bell</v-icon>
+      </v-badge>
+    </v-btn>
+
+    <!-- Profile Picture with Menu -->
+    <v-menu offset-y>
+      <template v-slot:activator="{ props }">
+        <v-btn v-bind="props" class="d-flex align-center" text>
+          <v-avatar size="40">
+            <v-img src="@/assets/profile.jpg" alt="Profile Picture" />
+          </v-avatar>
+          <span class="ml-2 text-white text-decoration-underline">{{ userName }}</span>
+        </v-btn>
+      </template>
+      <v-list>
+        <v-list-item to="/profile">
+          <v-list-item-title>Profile</v-list-item-title>
+        </v-list-item>
+        <v-list-item to="/settings">
+          <v-list-item-title>Settings</v-list-item-title>
+        </v-list-item>
+        <v-list-item @click="logout">
+          <v-list-item-title>Logout</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
+  </v-app-bar>
 
     <!-- Main Content -->
     <v-main>
@@ -75,10 +108,10 @@
         <v-row>
           <v-col cols="12" md="6">
             <v-card>
-              <v-card-title>Data Table 1</v-card-title>
+              <v-card-title>Users</v-card-title>
               <v-data-table
                 :headers="headers"
-                :items="items"
+                :items="userStore.users"
                 class="elevation-1"
                 :items-per-page="5"
               >
@@ -101,10 +134,10 @@
           </v-col>
           <v-col cols="12" md="6">
             <v-card>
-              <v-card-title>Data Table 2</v-card-title>
+              <v-card-title>Data Table 2 (fake data)</v-card-title>
               <v-data-table
-                :headers="headers"
-                :items="items"
+                :headers="headers1"
+                :items="items1"
                 class="elevation-1"
                 :items-per-page="5"
               >
@@ -133,17 +166,25 @@
 
 <script setup>
 import { ref } from 'vue';
+import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
+import { useUserStore } from '@/stores/users';
+
+const userStore = useUserStore()
+// Fetch users when the component mounts
+onMounted(() => {
+  userStore.fetchUsers()
+})
 
 // Table Data
-const headers = [
+const headers1 = [
   { text: 'Name', value: 'name' },
   { text: 'Email', value: 'email' },
   { text: 'Role', value: 'role' },
 ];
 
-const items = [
+const items1 = [
   { name: 'Alice', email: 'alice@example.com', role: 'Admin' },
   { name: 'Bob', email: 'bob@example.com', role: 'Editor' },
   { name: 'Charlie', email: 'charlie@example.com', role: 'Viewer' },
@@ -205,9 +246,27 @@ function logout() {
   const authStore = useAuthStore()
   const router = useRouter()
   authStore.logOut()  // set isLoggedIn = false
-  router.push('/login')
+  router.push('/app/login')
 }
 
+const userName = ref("Weasel");
+
+</script>
+
+<script>
+export default {
+  data() {
+    return {
+      headers: [
+        { text: 'FirstName', value: 'firstName' },
+        { text: 'LastName', value: 'lastName' },
+        { text: 'Email', value: 'email' },
+        { text: 'Username', value: 'userName' },
+        { text: 'Id', value: 'id' }
+      ]
+    }
+  }
+}
 </script>
 
 <style scoped>

@@ -45,7 +45,7 @@
           <v-card-actions class="justify-center">
             <small class="text-primary2">
               Don't have an account?
-              <a href="/register" class="text-accent">Sign up</a>
+              <a href="/app/register" class="text-accent">Sign up</a>
             </small>
           </v-card-actions>
         </v-card>
@@ -89,12 +89,12 @@ function handleSubmit() {
         alert('Logged in successfully');
         const authStore = useAuthStore();
         authStore.logIn();
-        router.push('/dashboard'); // Redirect to /dashboard upon success for all non admin users
+        router.push('/app/dashboard'); // Redirect to /dashboard upon success for all non admin users
       } else if (email.value === validAdminEmail && password.value === validPassword) {
         alert('Logged in successfully');
         const authStore = useAuthStore();
         authStore.logIn();
-        router.push('/admin'); // Redirect to /admin
+        router.push('/app/admin'); // Redirect to /admin
       }else {
         alert('Invalid email or password. Please try again.');
       }
