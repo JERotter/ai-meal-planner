@@ -1,17 +1,12 @@
 <template>
   <v-app>
-    <v-navigation-drawer
-      v-model="isDrawerOpen"
-      app
-      color="surface"
-      :permanent="false"
-    >
+    <!-- Navigation Drawer -->
+    <v-navigation-drawer v-model="isDrawerOpen" app color="surface">
       <v-list>
         <v-list-item to="/app/admin" title="Dashboard" />
         <v-list-item title="Inbox" />
         <v-list-item title="Drafts" />
-        <v-list-item title="Messages" />
-        <v-list-item title="Chat" />
+        <v-list-item title="Deleted" />
         <v-list-item to="/app/login" title="Logout" @click="logout" />
       </v-list>
     </v-navigation-drawer>
@@ -19,19 +14,18 @@
     <!-- App Bar -->
     <v-app-bar app color="primary" dark>
       <v-app-bar-nav-icon @click="toggleDrawer" /> <!-- Drawer Toggle Icon -->
-      <v-toolbar-title>Messages</v-toolbar-title>
+      <v-toolbar-title>Inbox</v-toolbar-title>
 
-      <!-- Spacer to push profile to the right -->
       <v-spacer></v-spacer>
 
-      <!-- Notification Bell Icon -->
-      <v-btn to="/app/notifications" icon>
-        <v-badge color="red" content="3" overlap> <!-- Example: 3 new notifications -->
+      <!-- Notifications -->
+      <v-btn to="/app/notifications/inbox" icon>
+        <v-badge color="red" content="3" overlap>
           <v-icon>mdi-bell</v-icon>
         </v-badge>
       </v-btn>
 
-      <!-- Profile Picture with Menu -->
+      <!-- Profile Menu -->
       <v-menu offset-y>
         <template v-slot:activator="{ props }">
           <v-btn v-bind="props" class="d-flex align-center" text>
@@ -55,123 +49,127 @@
       </v-menu>
     </v-app-bar>
 
-    <div class="inbox-container">
-      <h2>Messages</h2>
-      <div class="messages-list">
-        <div v-for="message in messages" :key="message.id" class="message">
-          <p><strong>{{ message.sender }}:</strong> {{ message.text }}</p>
-          <div class="actions">
-            <button @click="reply(message)">Reply</button>
-            <button @click="deleteMessage(message.id)" class="delete-btn">Delete</button>
-          </div>
-        </div>
-      </div>
+    <!-- Main Content -->
+    <v-main>
+      <v-container class="py-8 px-6" fluid>
+        <!-- White Avatar Section (Kept) -->
+        <v-sheet class="pa-4 mb-4" color="grey-lighten-4">
+          <v-avatar class="mb-2" color="grey-darken-1" size="64"></v-avatar>
+          <div>{{ userEmail }}</div>
+        </v-sheet>
 
-      <div v-if="selectedMessage" class="reply-box">
-        <h3>Reply to {{ selectedMessage.sender }}</h3>
-        <textarea v-model="replyText" placeholder="Type your reply..."></textarea>
-        <button @click="sendReply">Send</button>
-        <button @click="cancelReply" class="cancel-btn">Cancel</button>
-      </div>
-    </div>
+        <v-row>
+          <v-col v-for="(group, index) in messages" :key="index" cols="12">
+            <v-card>
+              <v-list>
+                <v-list-subheader>{{ group.date }}</v-list-subheader>
+
+                <template v-for="(message, msgIndex) in group.items" :key="msgIndex">
+                  <v-list-item @click="toggleMessage(group.date, msgIndex)">
+                    <template v-slot:prepend>
+                      <v-avatar color="grey-darken-1"></v-avatar>
+                    </template>
+
+                    <v-list-item-title>{{ message.sender }}</v-list-item-title>
+                    <v-list-item-subtitle>{{ message.preview }}</v-list-item-subtitle>
+                  </v-list-item>
+
+                  <v-expand-transition>
+                    <div v-if="message.expanded" class="px-4 py-2">
+                      <p>{{ message.fullText }}</p>
+                      <v-btn small color="primary" @click="reply(message)">Reply</v-btn>
+                      <v-btn small color="red" class="ml-2" @click="deleteMessage(group.date, msgIndex)">Delete</v-btn>
+                    </div>
+                  </v-expand-transition>
+
+                  <v-divider v-if="msgIndex !== group.items.length - 1"></v-divider>
+                </template>
+              </v-list>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
   </v-app>
 </template>
 
-<script>
-import { ref } from 'vue';
+<script setup>
+import { ref } from "vue";
 
-export default {
-  setup() {
-    const messages = ref([
-      { id: 1, sender: "Alice", text: "Hey! How are you?" },
-      { id: 2, sender: "Bob", text: "Reminder: Meeting at 3 PM" },
-      { id: 3, sender: "Charlie", text: "Can you send me the report?" }
-    ]);
+// Drawer state
+const isDrawerOpen = ref(false);
 
-    const selectedMessage = ref(null);
-    const replyText = ref("");
+// User info
+const userName = ref("weasel");
+const userEmail = ref("weezy@google.com");
 
-    const deleteMessage = (id) => {
-      messages.value = messages.value.filter(msg => msg.id !== id);
-    };
+// Sample messages
+const messages = ref([
+  {
+    date: "Today",
+    items: [
+      {
+        sender: "Alice",
+        preview: "Hey! How are you?",
+        fullText: "Hey! How are you? I wanted to catch up about the project.",
+        expanded: false,
+      },
+      {
+        sender: "Bob",
+        preview: "Meeting at 3 PM",
+        fullText: "Reminder: We have a meeting at 3 PM. See you there!",
+        expanded: false,
+      },
+    ],
+  },
+  {
+    date: "Yesterday",
+    items: [
+      {
+        sender: "Charlie",
+        preview: "Can you send me the report?",
+        fullText: "Hey, I need the latest project report. Can you send it to me?",
+        expanded: false,
+      },
+    ],
+  },
+]);
 
-    const reply = (message) => {
-      selectedMessage.value = message;
-      replyText.value = "";
-    };
+// Toggle drawer function
+const toggleDrawer = () => {
+  isDrawerOpen.value = !isDrawerOpen.value;
+};
 
-    const sendReply = () => {
-      if (replyText.value.trim() === "") return;
-      console.log(`Replying to ${selectedMessage.value.sender}:`, replyText.value);
-      cancelReply();
-    };
+// Expand/collapse messages
+const toggleMessage = (date, index) => {
+  const group = messages.value.find((g) => g.date === date);
+  group.items[index].expanded = !group.items[index].expanded;
+};
 
-    const cancelReply = () => {
-      selectedMessage.value = null;
-      replyText.value = "";
-    };
+// Handle reply action
+const reply = (message) => {
+  console.log(`Replying to ${message.sender}:`, message.fullText);
+};
 
-    return { messages, selectedMessage, replyText, deleteMessage, reply, sendReply, cancelReply };
-  }
+// Delete a message
+const deleteMessage = (date, index) => {
+  const group = messages.value.find((g) => g.date === date);
+  group.items.splice(index, 1);
+};
+
+// Logout function (stub)
+const logout = () => {
+  console.log("Logging out...");
 };
 </script>
 
 <style>
-.inbox-container {
-  max-width: 400px;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background: #f9f9f9;
-}
-
-.messages-list {
-  max-height: 300px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  padding: 10px;
-  background: white;
-}
-
-.message {
-  padding: 10px;
-  border-bottom: 1px solid #eee;
-}
-
-.actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 5px;
-}
-
-button {
-  padding: 5px 10px;
-  border: none;
+/* Custom styling */
+.v-list-item {
   cursor: pointer;
 }
 
-.delete-btn {
-  background: red;
-  color: white;
-}
-
-.reply-box {
-  margin-top: 20px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  background: white;
-}
-
-textarea {
-  width: 100%;
-  height: 60px;
-  margin-top: 5px;
-}
-
-.cancel-btn {
-  background: gray;
-  color: white;
-  margin-left: 5px;
+.v-list-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 </style>
