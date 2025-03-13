@@ -61,14 +61,12 @@
     </v-container>
 
     <!-- Footer -->
-    <v-footer class="bg-grey-darken-4 text-white text-center py-3">
-      <p>&copy; 2024 SmartMealPlanner. All rights reserved.</p>
+    <v-footer class="bg-grey-darken-4 text-white justify-center py-3">
+      <p>&copy; 2025 Per~Peri. All rights reserved.</p>
     </v-footer>
-    <!-- Footer -->
     <footer class="py-6 bg-gray-900 text-white text-center">
-      <p>&copy; 2024 Eat This Much Clone. All rights reserved.</p>
     </footer>
-
+    <AppFooter/>
   </div>
 </template>
 

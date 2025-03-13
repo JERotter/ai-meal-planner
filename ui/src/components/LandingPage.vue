@@ -46,7 +46,7 @@
           <v-card class="pa-5 text-center">
             <v-icon size="50" color="primary">mdi-food</v-icon>
             <h3 class="text-h6 font-weight-bold mt-3">Generate Meals</h3>
-            <p class="text-body-2">Get customized meal plans in seconds.</p>
+            <p class="text-body-2">Get customized A.I.-generated meal plans in seconds.</p>
           </v-card>
         </v-col>
         <v-col cols="12" md="4">
@@ -109,12 +109,10 @@
     </v-container>
 
     <!-- Footer -->
-    <v-footer class="bg-grey-darken-4 text-white text-center py-3">
-      <p>&copy; 2024 SmartMealPlanner. All rights reserved.</p>
+    <v-footer class="bg-grey-darken-4 text-white justify-center py-3">
+      <p>&copy; 2025 Per~Peri. All rights reserved.</p>
     </v-footer>
-    <!-- Footer -->
     <footer class="py-6 bg-gray-900 text-white text-center">
-      <p>&copy; 2024 Eat This Much Clone. All rights reserved.</p>
     </footer>
   </div>
 </template>

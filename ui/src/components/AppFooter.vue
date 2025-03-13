@@ -83,7 +83,7 @@ export default {
         links: [
           { text: "Help Center", url: "#" },
           { text: "Contact Us", url: "#" },
-          { text: "FAQs", url: "#" },
+          { text: "FAQs", url: "/questions" },
         ],
       },
       {

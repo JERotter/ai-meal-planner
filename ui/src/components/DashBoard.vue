@@ -6,7 +6,6 @@
       color="surface"
       :permanent="false"
     >
-    <!-- IDK...?? -->
     <v-img
           src="@/assets/logo-white.png"
           alt="A.I. Meal Planner Logo"
@@ -15,7 +14,6 @@
           cover
           class="logo-img"
         />
-        <!-- IDK...?? -->
       <v-list>
         <v-list-item title="Dashboard" />
         <v-list-item title="Profile" />
@@ -58,7 +56,7 @@
         <v-list-item to="/settings">
           <v-list-item-title>Settings</v-list-item-title>
         </v-list-item>
-        <v-list-item @click="logout">
+        <v-list-item to="/app/login" @click="logout">
           <v-list-item-title>Logout</v-list-item-title>
         </v-list-item>
       </v-list>

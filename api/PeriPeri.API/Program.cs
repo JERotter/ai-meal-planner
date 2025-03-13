@@ -9,7 +9,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowVueApp",
-        policy => policy.WithOrigins("https://localhost:3000") // Update this to match your Vue dev server
+        policy => policy.WithOrigins("http://localhost:3000")
                         .AllowAnyMethod()
                         .AllowAnyHeader());
 });

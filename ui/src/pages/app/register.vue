@@ -65,6 +65,12 @@
               <a href="/app/login" class="text-accent">Log in</a>
             </small>
           </v-card-actions>
+
+          <v-card-actions class="justify-center">
+            <small class="text-primary2">
+              <a href="/about" class="text-accent">About Us</a>
+            </small>
+          </v-card-actions>
         </v-card>
       </v-container>
     </v-main>
