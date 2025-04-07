@@ -1,35 +1,31 @@
 name: Generate Readme
+
 on:
-  pull_request:
-    paths:  
-      - "api/**"
-      - ".github/workflows/**"
-    branches: [ main ]
-permissions:
-  contents: write
+  push:
+    paths:
+      - 'data.json'
+      - 'TEMPLATE.md'
+      - '.github/workflows/generate-Readme.yml'
+  workflow_dispatch:
+
 jobs:
-  publish:
+  update-readme:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    - name: Read data.json
-      id: json
-      run: echo "data=$(jq -c . data.json)" >> "$GITHUB_OUTPUT"    
-    - name: Generate README.md
-      uses: probablykasper/readme-template-action@v1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        template: TEMPLATE.md
-        output: README.md
-        data: ${{ steps.json.outputs.data }}
-    - name: Update README.md
-      run: |
-        if [[ "$(git status --porcelain)" != "" ]]; then
-          git config user.name "GitHub Action"
-          git config user.email "action@github.com"
-          git add .
-          git commit -m "Auto-update README.md"
+      - uses: actions/checkout@v3
+      
+      - name: Update README.md
+        uses: probablykasper/readme-template-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          template: 'TEMPLATE.md'
+          output: 'README.md'
+          data: 'data.json'
+      
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md
+          git commit -m "Update README" || echo "No changes to commit"
           git push
-        fi
