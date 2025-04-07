@@ -1,6 +1,6 @@
 name: Generate Readme
 on:
-  push:
+  pull_request:
     paths:  
       - "api/**"
       - ".github/workflows/**"
