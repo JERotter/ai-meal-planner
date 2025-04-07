@@ -20,3 +20,7 @@
 
 ```bash
 {{install_instructions}}
+```
+```bash
+{{test_instructions}}
+```
