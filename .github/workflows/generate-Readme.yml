@@ -1,6 +1,9 @@
 name: Generate Readme
 on:
-  push:
+  pull_request:
+    paths:  
+      - "api/**"
+      - ".github/workflows/**"
     branches: [ main ]
 permissions:
   contents: write
@@ -11,12 +14,16 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
+    - name: Read data.json
+      id: json
+      run: echo "data=$(jq -c . data.json)" >> "$GITHUB_OUTPUT"    
     - name: Generate README.md
       uses: probablykasper/readme-template-action@v1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         template: TEMPLATE.md
         output: README.md
+        data: ${{ steps.json.outputs.data }}
     - name: Update README.md
       run: |
         if [[ "$(git status --porcelain)" != "" ]]; then
