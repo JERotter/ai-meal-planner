@@ -1,6 +1,8 @@
 name: Generate Readme
 on:
   push:
+    paths:  
+      - "api/**"
     branches: [ main ]
 permissions:
   contents: write
