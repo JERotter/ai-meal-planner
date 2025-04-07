@@ -3,6 +3,7 @@ on:
   push:
     paths:  
       - "api/**"
+      - ".github/workflows/**"
     branches: [ main ]
 permissions:
   contents: write
