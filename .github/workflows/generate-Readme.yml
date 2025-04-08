@@ -13,27 +13,31 @@ jobs:
   update-readme:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Debug file contents
+      - name: Read data.json into output
+        id: json
         run: |
-         echo "Contents of data.json:"
-         cat data.json
-         echo "Contents of TEMPLATE.md:"
-         cat TEMPLATE.md
-      
-      - name: Update README.md
+          echo "data=$(jq -c . data.json)" >> "$GITHUB_OUTPUT"
+
+      - name: Generate README.md
         uses: probablykasper/readme-template-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          template: 'TEMPLATE.md'
-          output: 'README.md'
-          data: 'data.json'
-      
-      - name: Commit changes
+          template: TEMPLATE.md
+          output: README.md
+          data: ${{ steps.json.outputs.data }}
+
+      - name: Show generated README.md
+        run: cat README.md
+
+      - name: Commit README.md
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add README.md
-          git commit -m "Update README" || echo "No changes to commit"
-          git push
+          if [[ "$(git status --porcelain)" != "" ]]; then
+            git config user.name "GitHub Action"
+            git config user.email "action@github.com"
+            git add README.md
+            git commit -m "Auto-update README.md"
+            git push
+          fi
