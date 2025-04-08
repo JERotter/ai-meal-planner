@@ -1,7 +1,7 @@
 {
   "name": "Awesome Project",
   "description": "A cool project using Vue and .NET",
-  "tech_stack": "Vue 3\nASP.NET Core\nDocker",
+  "tech_stack": "Vue 3, ASP.NET Core, Docker",
   "additional_tech": "GitHub Actions",
   "install_instructions": "test1",
   "test_instructions": "dotnet test",
