@@ -24,3 +24,6 @@
 ```bash
 {{ test_instructions }}
 ```
+
+## License
+{{ license }}
