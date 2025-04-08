@@ -26,7 +26,7 @@ jobs:
       - name: Read data.json into output
         id: json
         run: |
-          echo "data=$(jq -c . data.json)" >> "$GITHUB_OUTPUT"
+          echo "data=$(jq -c . data.json)" >> $GITHUB_OUTPUT
 
       - name: Generate README.md
         uses: probablykasper/readme-template-action@v1
