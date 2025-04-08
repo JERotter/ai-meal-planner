@@ -14,6 +14,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Debug file contents
+        run: |
+         echo "Contents of data.json:"
+         cat data.json
+         echo "Contents of README.template.md:"
+         cat README.template.md
       
       - name: Update README.md
         uses: probablykasper/readme-template-action@v1
