@@ -2,8 +2,6 @@
 
 {{ description }}
 
-{{ badges }}
-
 ---
 
 ## 📦 Tech Stack
