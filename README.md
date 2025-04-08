@@ -1,26 +1,26 @@
 <!-- AUTO-GENERATED: DO NOT EDIT DIRECTLY -->
 <!-- This file is generated from TEMPLATE.md via GitHub Actions -->
 
-# {{name}}
+# {{ name }}
 
-{{description}}
+{{ description }}
 
-{{badges}}
+{{ badges }}
 
 ---
 
 ## 📦 Tech Stack
 
-- {{tech_stack}}
-- {{additional_tech}}
+- {{ tech_stack }}
+- {{ additional_tech }}
 
 ---
 
 ## 🚀 Getting Started
 
 ```bash
-{{install_instructions}}
+{{ install_instructions }}
 ```
 ```bash
-{{test_instructions}}
+{{ test_instructions }}
 ```
