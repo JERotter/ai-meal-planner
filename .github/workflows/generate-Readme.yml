@@ -19,8 +19,8 @@ jobs:
         run: |
          echo "Contents of data.json:"
          cat data.json
-         echo "Contents of README.template.md:"
-         cat README.template.md
+         echo "Contents of TEMPLATE.md:"
+         cat TEMPLATE.md
       
       - name: Update README.md
         uses: probablykasper/readme-template-action@v1
