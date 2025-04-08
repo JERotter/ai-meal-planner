@@ -6,52 +6,21 @@ on:
       - 'data.json'
       - 'TEMPLATE.md'
       - '.github/workflows/generate-Readme.yml'
+
 permissions:
   contents: write
 
 jobs:
-  update-readme:
+  replace:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Debug file contents
-        run: |
-         echo "Contents of data.json:"
-         cat data.json
-         echo "Contents of TEMPLATE.md:"
-         cat TEMPLATE.md
-
-      - name: Install jq
-        run: sudo apt-get update && sudo apt-get install -y jq
-
-      - name: Read data.json into output
-        id: json
-        run: |
-          DATA=$(jq -c . data.json)
-          echo "data=$DATA" >> $GITHUB_OUTPUT
-
-      - name: Show parsed data output
-        run: echo "${{ steps.json.outputs.data }}"
+    name: Replace Placeholders in File.
     
-      - name: Generate README.md
-        uses: probablykasper/readme-template-action@v1
+    steps:
+      - uses: actions/checkout@v2
+      - uses: Readme-Workflows/readme-replacer@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          template: TEMPLATE.md
-          output: README.md
-          data: ${{ steps.json.outputs.data }}
-
-      - name: Show generated README.md
-        run: cat README.md
-
-      - name: Commit README.md
-        run: |
-          if [[ "$(git status --porcelain)" != "" ]]; then
-            git config user.name "GitHub Action"
-            git config user.email "action@github.com"
-            git add README.md
-            git commit -m "Auto-update README.md"
-            git push
-          fi
+          TEMPLATE_FILE: 'TEMPLATE.md'
+          COMMIT_FILE: 'README.md'
+          CUSTOM_REPLACER_FILE: 'data.json'
