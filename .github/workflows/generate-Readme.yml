@@ -23,6 +23,9 @@ jobs:
          echo "Contents of TEMPLATE.md:"
          cat TEMPLATE.md
 
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
       - name: Read data.json into output
         id: json
         run: |
