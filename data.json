@@ -1,8 +1,9 @@
 {
-    "name": "Awesome Project",
-    "description": "A cool project using Vue and .NET",
-    "tech_stack": "- Vue 3\n- ASP.NET Core\n- Docker",
-    "install_instructions": "npm install && npm run dev",
-    "test_instructions": "dotnet test",
-    "license": "MIT"
-  }  
+  "name": "Awesome Project",
+  "description": "A cool project using Vue and .NET",
+  "tech_stack": "Vue 3, ASP.NET Core, Docker",
+  "additional_tech": "GitHub Actions",
+  "install_instructions": "test1",
+  "test_instructions": "dotnet test",
+  "license": "TEST"
+}

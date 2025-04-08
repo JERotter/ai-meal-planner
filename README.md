@@ -1,22 +1,24 @@
-<!-- AUTO-GENERATED: DO NOT EDIT DIRECTLY -->
-<!-- This file is generated from TEMPLATE.md via GitHub Actions -->
+# Awesome Project
 
-# {{ name }}
-
-{{ description }}
-
-{{ badges }}
+A cool project using Vue and .NET
 
 ---
 
 ## 📦 Tech Stack
 
-- {{ tech_stack }}
-- {{ additional_tech }}
+- Vue 3, ASP.NET Core, Docker
+- GitHub Actions
 
 ---
 
 ## 🚀 Getting Started
 
 ```bash
-{{ install_instructions }}
+test1
+```
+```bash
+dotnet test
+```
+
+## License
+TEST

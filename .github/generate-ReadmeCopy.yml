@@ -1,0 +1,26 @@
+# name: Generate Readme
+
+on:
+  # push:
+  #   paths:
+  #     - 'data.json'
+  #     - 'TEMPLATE.md'
+  #     - '.github/workflows/generate-Readme.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  replace:
+    runs-on: ubuntu-latest
+    name: Replace Placeholders in File.
+    
+    steps:
+      - uses: actions/checkout@v2
+      - uses: Readme-Workflows/readme-replacer@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          TEMPLATE_FILE: 'TEMPLATE.md'
+          COMMIT_FILE: 'README.md'
+          CUSTOM_REPLACER_FILE: 'data.json'
