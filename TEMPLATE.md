@@ -1,7 +1,7 @@
 <!-- AUTO-GENERATED: DO NOT EDIT DIRECTLY -->
 <!-- This file is generated from TEMPLATE.md via GitHub Actions -->
 
-# {{ name }}
+# {{{ name }}}
 
 {{ description }}
 
