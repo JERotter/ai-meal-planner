@@ -1,8 +1,10 @@
 {
-    "name": "Awesome Project",
-    "description": "A cool project using Vue and .NET",
-    "tech_stack": "- Vue 3\n- ASP.NET Core\n- Docker",
-    "install_instructions": "npm install && npm run dev",
-    "test_instructions": "dotnet test",
-    "license": "MIT"
-  }  
+  "name": "Awesome Project",
+  "description": "A cool project using Vue and .NET",
+  "badges": "[![Build Status](https://img.shields.io/github/workflow/status/username/repo/CI)](https://github.com/username/repo/actions)",
+  "tech_stack": "Vue 3\nASP.NET Core\nDocker",
+  "additional_tech": "GitHub Actions",
+  "install_instructions": "npm install && npm run dev",
+  "test_instructions": "dotnet test",
+  "license": "MIT"
+}
