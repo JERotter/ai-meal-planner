@@ -1,4 +1,4 @@
-# $Awesome Project
+# Awesome Project
 
 $A cool project using Vue and .NET
 
