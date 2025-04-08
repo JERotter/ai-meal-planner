@@ -1,24 +1,24 @@
-# {{ name }}
+# {{name}}
 
-{{ description }}
+{{description}}
 
 ---
 
 ## 📦 Tech Stack
 
-- {{ tech_stack }}
-- {{ additional_tech }}
+- {{tech_stack}}
+- {{additional_tech}}
 
 ---
 
 ## 🚀 Getting Started
 
 ```bash
-{{ install_instructions }}
+{{install_instructions}}
 ```
 ```bash
-{{ test_instructions }}
+{{test_instructions}}
 ```
 
 ## License
-{{ license }}
+{{license}}
