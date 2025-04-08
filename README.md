@@ -1,24 +1,24 @@
-# ${{name}}
+# $Awesome Project
 
-${{description}}
+$A cool project using Vue and .NET
 
 ---
 
 ## 📦 Tech Stack
 
-- ${{tech_stack}}
-- ${{additional_tech}}
+- $Vue 3, ASP.NET Core, Docker
+- $GitHub Actions
 
 ---
 
 ## 🚀 Getting Started
 
 ```bash
-${{install_instructions}}
+$test1
 ```
 ```bash
-${{test_instructions}}
+$dotnet test
 ```
 
 ## License
-${{license}}
+$TEST
