@@ -6,5 +6,5 @@
   "additional_tech": "GitHub Actions",
   "install_instructions": "clone repo",
   "test_instructions": "dotnet test",
-  "license": "TEST"
+  "license": "MIT"
 }
