@@ -27,7 +27,7 @@ jobs:
           
           # For each key in data.json, replace {{key}} in the template
           for KEY in $(echo "$DATA" | jq -r 'keys[]'); do
-            VALUE=$(echo "$DATA" | jq -r --arg k "$KEY" '.[$k]')
+            VALUE=$(echo "$DATA" | jq -r --arg k "$KEY" '.[$k]' | sed 's/\//\\\//g')
             README=$(echo "$README" | sed "s/{{$KEY}}/$VALUE/g")
           done
           
