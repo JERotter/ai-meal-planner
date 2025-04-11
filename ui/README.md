@@ -1,5 +1,5 @@
 # 🌶️Peri~Peri🌶️ A.I. Meal Planner UI
-[![Custom README Generator](https://github.com/JERotter/ai-meal-planner/actions/workflows/generate-Readme.yml/badge.svg)](https://github.com/JERotter/ai-meal-planner/actions/workflows/generate-Readme.yml)
+[![Coverage](https://img.shields.io/codecov/c/github/username/repo)](https://codecov.io/gh/username/repo)[![Version](https://img.shields.io/badge/npm-v8.3.1-blue)](https://www.npmjs.com/)[![Vue 3](https://img.shields.io/badge/Frontend-Vue%203-42b883?logo=vue.js)](https://vuejs.org/)[![Nuxt 3](https://img.shields.io/badge/Framework-Nuxt%203-00DC82?logo=nuxt.js{{badges}}logoColor=white)](https://nuxt.com/docs/getting-started/introduction)
 
 UI for Peri~Peri
 
