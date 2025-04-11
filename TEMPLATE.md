@@ -1,4 +1,5 @@
 # {{name}}
+{{badges}}
 
 {{description}}
 
