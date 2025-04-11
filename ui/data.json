@@ -1,0 +1,9 @@
+{
+    "name": "🌶️Peri~Peri🌶️ A.I. Meal Planner UI",
+    "badges": "[![Custom README Generator](https://github.com/JERotter/ai-meal-planner/actions/workflows/generate-Readme.yml/badge.svg)](https://github.com/JERotter/ai-meal-planner/actions/workflows/generate-Readme.yml)",
+    "description": "UI for Peri~Peri",
+    "tech_stack": "Vue 3",
+    "additional_tech": "GitHub Actions",
+    "install_instructions": "clone repo, npm run dev",
+    "test_instructions": "npm test"
+  }

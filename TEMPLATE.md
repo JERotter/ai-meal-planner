@@ -12,14 +12,13 @@
 
 ---
 
-## 🚀 Getting Started
+## UI Documentation (Front-end)
 
-```bash
-{{install_instructions}}
-```
-```bash
-{{test_instructions}}
-```
+Documentation can be found in the [front-end **ui**](ui) folder.
+
+## API Documentation (Back-end)
+
+Documentation can be found in the [back-end **api**](api) folder.
 
 ## License
 {{license}}
