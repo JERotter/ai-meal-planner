@@ -1,0 +1,9 @@
+{
+    "name": "🌶️Peri~Peri🌶️ A.I. Meal Planner API",
+    "badges": "[![Custom README Generator](https://github.com/JERotter/ai-meal-planner/actions/workflows/generate-Readme.yml/badge.svg)](https://github.com/JERotter/ai-meal-planner/actions/workflows/generate-Readme.yml)",
+    "description": "API for Peri~Peri",
+    "tech_stack": "ASP.NET Core, Docker, Postgres",
+    "additional_tech": "GitHub Actions",
+    "install_instructions": "clone repo",
+    "test_instructions": "dotnet test"
+}

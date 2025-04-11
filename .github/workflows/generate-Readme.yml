@@ -5,6 +5,11 @@ on:
     paths:
       - 'data.json'
       - 'TEMPLATE.md'
+      - 'api/data.json'
+      - 'api/TEMPLATE.md'
+      - 'ui/data.json'
+      - 'ui/TEMPLATE.md'
+      - '.github/workflows/generate-Readme.yml'
   workflow_dispatch:
 
 jobs:
@@ -15,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Generate README from template
+      - name: Generate Root README from template
         run: |
           # Read the data.json
           DATA=$(cat data.json)
@@ -37,11 +42,43 @@ jobs:
           # Show the result
           echo "Generated README.md:"
           cat README.md
+
+      - name: Generate API README
+        run: |
+          cd api
+          DATA=$(cat data.json)
+          TEMPLATE=$(cat TEMPLATE.md)
+          
+          README="$TEMPLATE"
+          
+          for KEY in $(echo "$DATA" | jq -r 'keys[]'); do
+            VALUE=$(echo "$DATA" | jq -r --arg k "$KEY" '.[$k]' | sed 's/\//\\\//g')
+            README=$(echo "$README" | sed "s/{{$KEY}}/$VALUE/g")
+          done
+          
+          echo "$README" > README.md
+          echo "Generated API README.md"
+      
+      - name: Generate UI README
+        run: |
+          cd ui
+          DATA=$(cat data.json)
+          TEMPLATE=$(cat TEMPLATE.md)
+          
+          README="$TEMPLATE"
+          
+          for KEY in $(echo "$DATA" | jq -r 'keys[]'); do
+            VALUE=$(echo "$DATA" | jq -r --arg k "$KEY" '.[$k]' | sed 's/\//\\\//g')
+            README=$(echo "$README" | sed "s/{{$KEY}}/$VALUE/g")
+          done
+          
+          echo "$README" > README.md
+          echo "Generated UI README.md"
       
       - name: Commit changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add README.md
-          git commit -m "Update README.md from template" || echo "No changes to commit"
+          git add README.md api/README.md ui/README.md
+          git commit -m "Update READMEs" || echo "No changes to commit"
           git push
