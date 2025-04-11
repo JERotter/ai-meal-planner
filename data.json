@@ -1,10 +1,5 @@
 {
   "name": "🌶️Peri~Peri🌶️ A.I. Meal Planner",
   "badges": "[![Custom README Generator](https://github.com/JERotter/ai-meal-planner/actions/workflows/generate-Readme.yml/badge.svg)](https://github.com/JERotter/ai-meal-planner/actions/workflows/generate-Readme.yml)",
-  "description": "A cool project using Vue and .NET",
-  "tech_stack": "Vue 3, ASP.NET Core, Docker, Postgres",
-  "additional_tech": "GitHub Actions",
-  "install_instructions": "clone repo",
-  "test_instructions": "dotnet test",
-  "license": "MIT"
+  "description": "An App that allows you to create custom meal plans with the help of A.I."
 }
