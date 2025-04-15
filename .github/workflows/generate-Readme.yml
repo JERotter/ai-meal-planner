@@ -20,61 +20,33 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Generate Root README from template
-        run: |
-          # Read the data.json
-          DATA=$(cat data.json)
-          # Read the template
-          TEMPLATE=$(cat TEMPLATE.md)
-          
-          # Extract values from JSON and create a README
-          README="$TEMPLATE"
-          
-          # For each key in data.json, replace {{key}} in the template
-          for KEY in $(echo "$DATA" | jq -r 'keys[]'); do
-            VALUE=$(echo "$DATA" | jq -r --arg k "$KEY" '.[$k]' | sed 's/\//\\\//g')
-            README=$(echo "$README" | sed "s/{{$KEY}}/$VALUE/g")
-          done
-          
-          # Write the README file
-          echo "$README" > README.md
-          
-          # Show the result
-          echo "Generated README.md:"
-          cat README.md
+      - name: Replace Root README
+        uses: Readme-Workflows/readme-replacer@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          TEMPLATE_FILE: ./TEMPLATE.md
+          COMMIT_FILE: ./README.md
+          CUSTOM_REPLACER_FILE: ./data.json
 
-      - name: Generate API README
-        run: |
-          cd api
-          DATA=$(cat data.json)
-          TEMPLATE=$(cat TEMPLATE.md)
-          
-          README="$TEMPLATE"
-          
-          for KEY in $(echo "$DATA" | jq -r 'keys[]'); do
-            VALUE=$(echo "$DATA" | jq -r --arg k "$KEY" '.[$k]' | sed 's/\//\\\//g')
-            README=$(echo "$README" | sed "s/{{$KEY}}/$VALUE/g")
-          done
-          
-          echo "$README" > README.md
-          echo "Generated API README.md"
-      
-      - name: Generate UI README
-        run: |
-          cd ui
-          DATA=$(cat data.json)
-          TEMPLATE=$(cat TEMPLATE.md)
-          
-          README="$TEMPLATE"
-          
-          for KEY in $(echo "$DATA" | jq -r 'keys[]'); do
-            VALUE=$(echo "$DATA" | jq -r --arg k "$KEY" '.[$k]' | sed 's/\//\\\//g')
-            README=$(echo "$README" | sed "s/{{$KEY}}/$VALUE/g")
-          done
-          
-          echo "$README" > README.md
-          echo "Generated UI README.md"
-      
+      - name: Replace API README
+        uses: Readme-Workflows/readme-replacer@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          TEMPLATE_FILE: ./api/TEMPLATE.md
+          COMMIT_FILE: ./api/README.md
+          CUSTOM_REPLACER_FILE: ./api/data.json
+
+      - name: Replace UI README
+        uses: Readme-Workflows/readme-replacer@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          TEMPLATE_FILE: ./ui/TEMPLATE.md
+          COMMIT_FILE: ./ui/README.md
+          CUSTOM_REPLACER_FILE: ./ui/data.json
+
       - name: Commit changes
         run: |
           git config --local user.email "action@github.com"
