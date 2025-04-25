@@ -4,8 +4,8 @@
 API for Peri~Peri
 
 * Vue 3
-  * *Composition API
-  * *Vue Router
+  * Composition API
+  * Vue Router
 * Tailwind CSS
 * TypeScript
 
