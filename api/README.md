@@ -3,12 +3,11 @@
 
 API for Peri~Peri
 
-Test
-* test
-* test
-
-* test
-**   test
+* Vue 3
+  * Composition API
+  * Vue Router
+* Tailwind CSS
+* TypeScript
 
 ---
 
