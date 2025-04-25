@@ -6,5 +6,5 @@
     "additional_tech": "GitHub Actions",
     "install_instructions": "clone repo",
     "test_instructions": "dotnet test",
-    "test_formatting": "Test\n test\n* test\n  *test\n**   test"
+    "test_formatting": "Test\n* test\n* test\n\n* test\n**   test"
 }
