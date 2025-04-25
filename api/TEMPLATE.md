@@ -3,6 +3,8 @@
 
 {{description}}
 
+{{test_formatting}}
+
 ---
 
 ## 🚀 Getting Started
