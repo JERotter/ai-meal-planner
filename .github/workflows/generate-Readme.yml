@@ -52,8 +52,8 @@ jobs:
           README="$TEMPLATE"
           
           for KEY in $(echo "$DATA" | jq -r 'keys[]'); do
-            VALUE=$(echo "$DATA" | jq -r --arg k "$KEY" '.[$k]' | sed 's/\//\\\//g')
-            README=$(echo "$README" | sed "s/{{$KEY}}/$VALUE/g")
+            VALUE=$(echo "$DATA" | jq -r --arg k "$KEY" '.[$k]' | sed -e 's/[&|]/\\&/g' -e ':a;N;$!ba;s/\n/\\n/g')
+            README=$(echo "$README" | sed "s|{{$KEY}}|$VALUE|g")
           done
           
           echo "$README" > README.md
