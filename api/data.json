@@ -7,5 +7,5 @@
     "install_instructions": "clone repo",
     "test_instructions": "dotnet test",
     "test_formatting": "* Vue 3\n  * Composition API\n  * Vue Router\n* Tailwind CSS\n* TypeScript",
-    "test_block": "``` test block ```"
+    "test_block": "```bash test block ```"
 }
