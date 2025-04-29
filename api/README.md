@@ -20,4 +20,4 @@ clone repo
 dotnet test
 ```
 #Test Block
-``` test block ```
+```bash test block ```
