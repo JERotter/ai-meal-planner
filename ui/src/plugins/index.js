@@ -6,8 +6,8 @@
 //Plugins
 import vuetify from './vuetify'
 import router from '@/router'
-import VueGoodTablePlugin from 'vue-good-table'
-import 'vue-good-table/dist/vue-good-table.css'
+import VueGoodTablePlugin from 'vue-good-table-next'
+import 'vue-good-table-next/dist/vue-good-table-next.css';
 import { createPinia } from 'pinia'
 
 export function registerPlugins (app) {

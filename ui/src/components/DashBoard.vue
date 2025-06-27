@@ -114,9 +114,10 @@
 
         <!-- Data Tables Row with 2 Tables -->
         <v-row>
+          <!-- LEFT SIDE: Regular Vuetify Data Table -->
           <v-col cols="12" md="6">
             <v-card>
-              <v-card-title>Users</v-card-title>
+              <v-card-title>Vuetify Data Table (Users)</v-card-title>
               <v-data-table
                 :headers="headers"
                 :items="userStore.users"
@@ -125,7 +126,7 @@
               >
                 <template v-slot:top>
                   <v-toolbar flat>
-                    <v-toolbar-title>Table 1 Title</v-toolbar-title>
+                    <v-toolbar-title>Regular Vuetify Table</v-toolbar-title>
                     <v-divider class="mx-4" inset vertical></v-divider>
                     <v-spacer></v-spacer>
                     <v-text-field
@@ -140,30 +141,28 @@
               </v-data-table>
             </v-card>
           </v-col>
+
+          <!-- RIGHT SIDE: Vue-Good-Table -->
           <v-col cols="12" md="6">
             <v-card>
-              <v-card-title>Data Table 2 (fake data)</v-card-title>
-              <v-data-table
-                :headers="headers1"
-                :items="items1"
-                class="elevation-1"
-                :items-per-page="5"
-              >
-                <template v-slot:top>
-                  <v-toolbar flat>
-                    <v-toolbar-title>Table 2 Title</v-toolbar-title>
-                    <v-divider class="mx-4" inset vertical></v-divider>
-                    <v-spacer></v-spacer>
-                    <v-text-field
-                      v-model="search"
-                      label="Search"
-                      single-line
-                      clearable
-                      prepend-icon="mdi-magnify"
-                    ></v-text-field>
-                  </v-toolbar>
-                </template>
-              </v-data-table>
+              <v-card-title>Vue-Good-Table (Sample Data)</v-card-title>
+              <div class="pa-4">
+                <vue-good-table
+                  :columns="vueGoodTableColumns"
+                  :rows="vueGoodTableRows"
+                  :search-options="{
+                    enabled: true,
+                    placeholder: 'Search this table',
+                  }"
+                  :pagination-options="{
+                    enabled: true,
+                    perPage: 5,
+                    perPageDropdown: [5, 10, 15],
+                    dropdownAllowAll: false,
+                  }"
+                  styleClass="vgt-table striped"
+                />
+              </div>
             </v-card>
           </v-col>
         </v-row>
@@ -184,21 +183,6 @@ const userStore = useUserStore()
 onMounted(() => {
   userStore.fetchUsers()
 })
-
-// Table Data
-const headers1 = [
-  { text: 'Name', value: 'name' },
-  { text: 'Email', value: 'email' },
-  { text: 'Role', value: 'role' },
-];
-
-const items1 = [
-  { name: 'Alice', email: 'alice@example.com', role: 'Admin' },
-  { name: 'Bob', email: 'bob@example.com', role: 'Editor' },
-  { name: 'Charlie', email: 'charlie@example.com', role: 'Viewer' },
-  { name: 'David', email: 'david@example.com', role: 'Admin' },
-  { name: 'Eve', email: 'eve@example.com', role: 'Editor' },
-];
 
 const search = ref('');
 
@@ -258,6 +242,46 @@ function logout() {
 }
 
 const userName = ref("Weasel");
+
+// Vue-Good-Table configuration
+const vueGoodTableColumns = ref([
+  {
+    label: 'Name',
+    field: 'name',
+    sortable: true,
+  },
+  {
+    label: 'Age',
+    field: 'age',
+    type: 'number',
+    sortable: true,
+  },
+  {
+    label: 'Created On',
+    field: 'createdAt',
+    type: 'date',
+    dateInputFormat: 'yyyy-MM-dd',
+    dateOutputFormat: 'MMM do yy',
+    sortable: true,
+  },
+  {
+    label: 'Percent',
+    field: 'score',
+    type: 'percentage',
+    sortable: true,
+  },
+]);
+
+const vueGoodTableRows = ref([
+  { id: 1, name: "John", age: 20, createdAt: null, score: 0.03343 },
+  { id: 2, name: "Jane", age: 24, createdAt: '2011-10-31', score: 0.03343 },
+  { id: 3, name: "Susan", age: 16, createdAt: '2011-10-30', score: 0.03343 },
+  { id: 4, name: "Chris", age: 55, createdAt: '2011-10-11', score: 0.03343 },
+  { id: 5, name: "Dan", age: 40, createdAt: '2011-10-21', score: 0.03343 },
+  { id: 6, name: "John", age: 20, createdAt: '2011-10-31', score: 0.03343 },
+  { id: 7, name: "Alice", age: 28, createdAt: '2012-05-15', score: 0.08921 },
+  { id: 8, name: "Bob", age: 32, createdAt: '2010-12-03', score: 0.12456 },
+]);
 
 </script>
 
@@ -324,5 +348,15 @@ export default {
 
 .flip-card-back {
   transform: rotateY(180deg);
+}
+
+/* Vue-Good-Table styling tweaks */
+.vgt-table {
+  border: none !important;
+}
+
+.vgt-table th {
+  background-color: #f5f5f5;
+  font-weight: 600;
 }
 </style>
