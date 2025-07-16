@@ -6,7 +6,6 @@ namespace PeriPeri.Persistence.Contexts;
 public class DomainEntityDbContext : DbContext
 {
     public DomainEntityDbContext(DbContextOptions<DomainEntityDbContext> options): base(options){}
-    public DomainEntityDbContext() {}
     public virtual DbSet<Recipe> Recipies { get; set; }
    
     protected override void OnModelCreating(ModelBuilder builder)
