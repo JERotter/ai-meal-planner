@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeriPeri.Infrastructure", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeriPeri.UnitTests", "PeriPeri.UnitTests\PeriPeri.UnitTests.csproj", "{F56D5648-A7A4-4D71-9D22-BF3C7B089749}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeriPeri.Persistence", "PeriPeri.Persistence\PeriPeri.Persistence.csproj", "{870101BE-7587-4DA6-8EB1-183873AA017C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{F56D5648-A7A4-4D71-9D22-BF3C7B089749}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F56D5648-A7A4-4D71-9D22-BF3C7B089749}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F56D5648-A7A4-4D71-9D22-BF3C7B089749}.Release|Any CPU.Build.0 = Release|Any CPU
+		{870101BE-7587-4DA6-8EB1-183873AA017C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{870101BE-7587-4DA6-8EB1-183873AA017C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{870101BE-7587-4DA6-8EB1-183873AA017C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{870101BE-7587-4DA6-8EB1-183873AA017C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
