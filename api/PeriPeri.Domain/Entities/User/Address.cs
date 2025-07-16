@@ -1,5 +1,5 @@
 using PeriPeri.Domain.Common;
-namespace PeriPeri.Domain.Entities.AppEntities;
+namespace PeriPeri.Domain.Entities.User;
 
 public class Address : BaseEntity
 {

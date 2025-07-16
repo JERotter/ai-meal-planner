@@ -6,7 +6,7 @@ using PeriPeri.Persistence.EntityConfig;
 namespace PeriPeri.Persistence.Contexts;
 public class UserDbContext : IdentityDbContext<User, UserTypes, Guid>
 {
-    public UserDbContext(DbContextOptions<UserDbContext> options): base(options){}
+    public UserDbContext(DbContextOptions<UserDbContext> options) : base(options) { }
 
 	protected override void OnModelCreating(ModelBuilder builder)
 	{

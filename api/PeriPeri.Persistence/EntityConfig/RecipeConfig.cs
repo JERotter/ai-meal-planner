@@ -11,7 +11,7 @@ public class RecipeConfig : IEntityTypeConfiguration<Recipe>
         (
             new Recipe
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.Parse("5718348e-983e-4091-a1fa-c38a957c34d5"),
                 Name = "Green Eggs and Ham",
                 Description = "A tasty and nostalgic breakfast!",
                 IsKeto = true,
@@ -26,7 +26,7 @@ public class RecipeConfig : IEntityTypeConfiguration<Recipe>
             },
             new Recipe
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.Parse("42ba20af-b004-4ef9-bdbb-bd4931d874ae"),
                 Name = "Chicken Alfredo with Zoodles",
                 Description = "Keto and low carb chicken alfredo.",
                 IsKeto = true,
@@ -42,7 +42,7 @@ public class RecipeConfig : IEntityTypeConfiguration<Recipe>
             },
             new Recipe
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.Parse("c3bc3531-eaa7-4221-9be7-3005f46c2e1f"),
                 Name = "Beef and Butter Bars",
                 Description = "A cheap and delcious alternative to the Carnivore Bar. Each bar contains 3oz beef and 2.6T butter.",
                 IsKeto = true,

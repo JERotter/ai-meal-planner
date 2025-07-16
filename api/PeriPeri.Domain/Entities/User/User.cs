@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
-using PeriPeri.Domain.Entities.AppEntities;
 using PeriPeri.Domain.Enums;
 namespace PeriPeri.Domain.Entities.User;
 public class User : IdentityUser<Guid>
@@ -11,7 +10,7 @@ public class User : IdentityUser<Guid>
     public Address? Address { get; set; }
     public string DateOfBirth { get; set; } = string.Empty;
     public UserStatus Status { get; set; }
-    public List<Recipe>? Recipes { get; set; }
+    public List<Guid>? RecipeIds { get; set; }
 
     public Guid CreatedBy { get; set; }
 

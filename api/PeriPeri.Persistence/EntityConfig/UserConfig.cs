@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PeriPeri.Domain.Entities.AppEntities;
 using PeriPeri.Domain.Entities.User;
 using PeriPeri.Domain.Enums;
 namespace PeriPeri.Persistence.EntityConfig;
@@ -23,7 +22,7 @@ public class UserConfig : IEntityTypeConfiguration<User>
                 EmailConfirmed = true,
                 DateOfBirth = "5/9/1998",
                 Status = UserStatus.Inactive,
-                Recipes = null,
+                RecipeIds = null,
                 CreatedBy = Guid.Empty,
                 CreatedOn = DateTime.UnixEpoch,
                 LastUpdatedBy = Guid.Empty,
@@ -50,7 +49,7 @@ public class UserConfig : IEntityTypeConfiguration<User>
             LastUpdatedBy = new Guid(),
             CreatedOn = DateTime.UnixEpoch,
             LastUpdated = DateTime.UnixEpoch,
-            UserId = Guid.Parse("f14dda6f-3d9c-41d6-85f0-4f79d9c7115f")
+            UserId = Guid.Parse("3f3b3f90-7ad6-4388-9d08-70487409aa1d")
         });
     }
 }
